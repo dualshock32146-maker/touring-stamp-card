@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ツーリング御朱印帳</title>
+<meta name="theme-color" content="#b8322a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="御朱印帳">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@600;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/*
+VOICE: 旅先で押してもらう御朱印帳。静かで手仕事の気配、でも操作はきびきび。
+IDEA: 和紙の帳面＋朱肉の印。地図は旅程、印は記録。
+PICTURE: 全画面の地図と、獲得時にぽんと押される朱印。
+COLOUR/TYPE: 和紙#f5efe2、墨#24211d、朱#b8322a、藍#24507a、若草#4f7d32。見出しZen Old Mincho、本文Noto Sans JP。
+LAYOUT: 上に絞り込み、下にタブ、詳細は下から出るシート。
+*/
+:root{color-scheme:light dark;
+--bg:light-dark(#f5efe2,#1b1916);--paper:light-dark(#fffaf0,#25221e);--ink:light-dark(#24211d,#efe7d6);--sub:light-dark(#6d655a,#a99f8f);
+--line:light-dark(#e2d8c4,#3a352e);--m:#b8322a;--d:#24507a;--f:#4f7d32;--acc:#b8322a}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 "Noto Sans JP",system-ui,sans-serif;overflow:hidden;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit;color:inherit}
+.app{position:fixed;inset:0;display:grid;grid-template-rows:auto 1fr auto}
+header{padding:calc(env(safe-area-inset-top) + 8px) 12px 8px;background:var(--paper);border-bottom:1px solid var(--line);z-index:500}
+h1{font:900 19px/1.2 "Zen Old Mincho",serif;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+h1 .seal{width:22px;height:22px;border:2px solid var(--acc);color:var(--acc);border-radius:4px;display:grid;place-items:center;font-size:12px;transform:rotate(-6deg)}
+h1 small{font:400 12px "Noto Sans JP";color:var(--sub);margin-left:auto}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.chip{flex:none;border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:6px 12px;min-height:36px;display:flex;align-items:center;gap:6px;cursor:pointer;font-size:14px}
+.chip i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed=true]{border-color:var(--c,var(--ink));background:color-mix(in srgb,var(--c,var(--ink)) 12%,transparent);font-weight:700}
+.chip select{border:0;background:transparent;font-size:14px;padding:0}
+main{position:relative;overflow:hidden}
+.view{position:absolute;inset:0;overflow:auto;display:none}
+.view.on{display:block}
+#map{position:absolute;inset:0;background:var(--bg)}
+.leaflet-container{font:inherit}
+.fab{position:absolute;right:12px;bottom:16px;z-index:450;width:48px;height:48px;border-radius:50%;border:0;background:var(--paper);box-shadow:0 2px 8px #0003;display:grid;place-items:center;cursor:pointer}
+.lbl span{display:inline-block;white-space:nowrap;font:700 12px/1.2 "Noto Sans JP",sans-serif;color:var(--c);background:#fffffff0;border-radius:4px;padding:2px 5px;box-shadow:0 1px 3px #0003;cursor:pointer}
+.leaflet-control-layers{border-radius:10px!important;font-size:14px}
+.leaflet-control-layers-toggle{width:44px!important;height:44px!important}
+.leaflet-control-layers label{padding:6px 2px}
+.me{width:16px;height:16px;border-radius:50%;background:#2b7de9;border:3px solid #fff;box-shadow:0 0 0 6px #2b7de933}
+nav{display:grid;grid-template-columns:repeat(3,1fr);background:var(--paper);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom);z-index:500}
+nav button{border:0;background:none;padding:8px 0 10px;min-height:52px;font-size:12px;color:var(--sub);display:grid;justify-items:center;gap:2px;cursor:pointer}
+nav button b{font:900 17px "Zen Old Mincho",serif}
+nav button[aria-current=true]{color:var(--acc)}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:900;background:var(--paper);border-radius:16px 16px 0 0;box-shadow:0 -6px 24px #0003;padding:10px 16px calc(16px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .25s ease;max-height:88vh;overflow:auto}
+.sheet.on{transform:none}
+.grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 10px}
+.cat{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--c);border-radius:4px;padding:1px 8px}
+.sheet h2{font:900 22px/1.25 "Zen Old Mincho",serif;margin:6px 0 2px}
+.meta{color:var(--sub);font-size:13px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.btn{flex:1 1 140px;min-height:46px;border-radius:10px;border:1.5px solid var(--ink);background:transparent;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;color:var(--ink);padding:0 12px}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.ghost{border-color:var(--line);font-weight:400}
+.btn:disabled{opacity:.5}
+.msg{margin-top:12px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--acc) 9%,transparent);font-size:14px}
+.msg:empty{display:none}
+label.f{display:block;margin-top:12px;font-size:13px;color:var(--sub)}
+textarea{width:100%;min-height:70px;border:1.5px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);font-size:16px}
+.photo{margin-top:6px;display:flex;gap:10px;align-items:center}
+.photo img{width:84px;height:84px;object-fit:cover;border-radius:8px}
+.got{display:flex;gap:14px;align-items:center;margin-top:12px}
+.got img{width:100%;border-radius:10px;margin-top:12px}
+:focus-visible{outline:3px solid #2b7de9;outline-offset:2px}
+/* 御朱印帳 */
+.wrap{padding:16px 14px 24px;max-width:860px;margin:0 auto}
+.wrap h3{font:900 20px "Zen Old Mincho",serif;margin:6px 0 4px}
+.lead{color:var(--sub);font-size:13px;margin:0 0 14px}
+.book{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.page{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:12px 8px 10px;text-align:center;cursor:pointer;box-shadow:inset 0 0 0 4px var(--paper),inset 0 0 0 5px var(--line)}
+.page svg{width:100%;max-width:130px;height:auto;display:block;margin:0 auto}
+.page p{margin:6px 0 0;font-size:12px;color:var(--sub);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.empty{padding:40px 16px;text-align:center;color:var(--sub)}
+.seg{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+/* 達成率 */
+.total{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:18px}
+.tot{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px}
+.tot b{display:block;font:900 clamp(24px,7vw,34px)/1.1 "Zen Old Mincho",serif;color:var(--c)}
+.tot span{font-size:12px;color:var(--sub)}
+.pref{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:10px}
+.pref h4{margin:0 0 8px;font:900 16px "Zen Old Mincho",serif;display:flex;justify-content:space-between}
+.pref h4 span{font:400 13px "Noto Sans JP";color:var(--sub)}
+.bar{display:grid;grid-template-columns:4.5em 1fr 4.5em;align-items:center;gap:8px;font-size:13px;margin:4px 0}
+.bar div{height:8px;border-radius:4px;background:var(--line);overflow:hidden}
+.bar div i{display:block;height:100%;background:var(--c)}
+.bar em{font-style:normal;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tools{margin-top:22px;padding-top:14px;border-top:1px solid var(--line)}
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 70px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;z-index:1200;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+.stampfx{position:fixed;inset:0;z-index:1100;display:grid;place-items:center;background:#0004;pointer-events:none;opacity:0;transition:opacity .2s}
+.stampfx.on{opacity:1}
+.stampfx svg{width:min(70vw,300px);animation:press .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes press{from{transform:scale(2.2) rotate(-14deg);opacity:0}to{transform:scale(1) rotate(-4deg);opacity:1}}
+@media(prefers-reduced-motion:reduce){.stampfx svg{animation:none}.sheet{transition:none}}
+.dlg{position:fixed;inset:0;z-index:1300;background:#0006;display:none;place-items:center;padding:20px}
+.dlg.on{display:grid}
+.dlg>div{background:var(--paper);border-radius:14px;padding:18px;max-width:360px;width:100%}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <h1><span class="seal">印</span>ツーリング御朱印帳<small id="count"></small></h1>
+  <div class="chips" id="filters">
+    <button class="chip" data-cat="m" style="--c:var(--m)" aria-pressed="true"><i></i>道の駅</button>
+    <button class="chip" data-cat="d" style="--c:var(--d)" aria-pressed="true"><i></i>ダム</button>
+    <button class="chip" data-cat="f" style="--c:var(--f)" aria-pressed="true"><i></i>牧場</button>
+    <button class="chip" id="onlyNew" aria-pressed="false">未獲得のみ</button>
+    <label class="chip"><select id="prefSel" aria-label="都県"><option value="">全都県</option></select></label>
+  </div>
+</header>
+<main>
+  <section class="view on" id="v-map"><div id="map"></div><button class="fab" id="locate" aria-label="現在地"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button></section>
+  <section class="view" id="v-book"><div class="wrap">
+    <h3>御朱印帳</h3><p class="lead" id="bookLead"></p>
+    <div class="seg" id="bookSeg"></div>
+    <div class="book" id="book"></div>
+  </div></section>
+  <section class="view" id="v-stat"><div class="wrap">
+    <h3>達成率</h3><p class="lead">関東1都6県＋山梨・静岡</p>
+    <div class="total" id="total"></div>
+    <div id="prefs"></div>
+    <div class="tools">
+      <h3 style="font-size:16px">記録のバックアップ</h3>
+      <p class="lead">記録はこの端末のブラウザ内に保存されています。機種変更やブラウザのデータ削除に備えて、ときどき書き出してください（写真も含みます）。</p>
+      <div class="row"><button class="btn" id="exp">書き出す</button><label class="btn ghost">読み込む<input type="file" id="imp" accept="application/json" hidden></label></div>
+      <p class="lead" style="margin-top:14px">地図：地理院タイル／データ：国土数値情報（道の駅 2018年、ダム 2014年）、牧場は手動選定。新しい施設は未収録の場合があります。</p>
+    </div>
+  </div></section>
+</main>
+<nav>
+  <button data-v="map" aria-current="true"><b>地図</b>さがす</button>
+  <button data-v="book"><b>帳面</b>あつめた印</button>
+  <button data-v="stat"><b>達成</b>都県別</button>
+</nav>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="false"><div class="grab"></div><div id="sheetBody"></div></div>
+<div class="stampfx" id="fx"></div>
+<div class="toast" id="toast"></div>
+<div class="dlg" id="dlg"><div><p id="dlgMsg"></p><div class="row"><button class="btn ghost" id="dlgNo">やめる</button><button class="btn pri" id="dlgYes">削除する</button></div></div></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+{
+const SPOTS=__DATA__;
+const CAT={m:{n:'道の駅',c:'#b8322a'},d:{n:'ダム',c:'#24507a'},f:{n:'牧場',c:'#4f7d32'}};
+const PREFS=['茨城県','栃木県','群馬県','埼玉県','千葉県','東京都','神奈川県','山梨県','静岡県'];
+const byId=Object.fromEntries(SPOTS.map(s=>[s.id,s]));
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---- IndexedDB ---- */
+let idb;const visits=new Map();
+function openDB(){return new Promise((ok,ng)=>{const r=indexedDB.open('goshuin',1);r.onupgradeneeded=()=>r.result.createObjectStore('visits',{keyPath:'id'});r.onsuccess=()=>{idb=r.result;ok()};r.onerror=()=>ng(r.error)})}
+function tx(mode){return idb.transaction('visits',mode).objectStore('visits')}
+function loadAll(){return new Promise(ok=>{const q=tx('readonly').getAll();q.onsuccess=()=>{q.result.forEach(v=>visits.set(v.id,v));ok()};q.onerror=()=>ok()})}
+function putVisit(v){return new Promise((ok,ng)=>{const q=tx('readwrite').put(v);q.onsuccess=()=>{visits.set(v.id,v);ok()};q.onerror=()=>ng(q.error)})}
+function delVisit(id){return new Promise(ok=>{const q=tx('readwrite').delete(id);q.onsuccess=()=>{visits.delete(id);ok()};q.onerror=()=>ok()})}
+
+/* ---- helpers ---- */
+function dist(a,b,c,d){const R=6371e3,t=Math.PI/180,x=(d-b)*t*Math.cos((a+c)/2*t),y=(c-a)*t;return Math.sqrt(x*x+y*y)*R}
+const fmtD=m=>m<1000?Math.round(m)+'m':(m/1000).toFixed(m<10000?1:0)+'km';
+const fmtDate=ts=>{const d=new Date(ts);return d.getFullYear()+'.'+(d.getMonth()+1)+'.'+d.getDate()};
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),2200)}
+function hash(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))|0;return Math.abs(h)}
+function getPos(){return new Promise((ok,ng)=>{if(!navigator.geolocation)return ng(new Error('この端末では位置情報が使えません'));navigator.geolocation.getCurrentPosition(p=>ok(p.coords),e=>ng(new Error(e.code===1?'位置情報の利用が許可されていません。設定から許可してください':'現在地を取得できませんでした')),{enableHighAccuracy:true,timeout:15000,maximumAge:30000})})}
+function resize(file){return new Promise(ok=>{const img=new Image();img.onload=()=>{const k=Math.min(1,1280/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=img.width*k;c.height=img.height*k;c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(b=>{URL.revokeObjectURL(img.src);ok(b)},'image/jpeg',.82)};img.onerror=()=>ok(null);img.src=URL.createObjectURL(file)})}
+
+/* ---- 朱印SVG ---- */
+function stamp(s,v){
+  const col=CAT[s.c].c,rot=(hash(s.id)%11)-5;
+  let name=s.c==='m'?s.n.replace(/^道の駅\s*/,''):s.n;
+  const L=[...name].length,fs=L<=4?30:L<=6?24:L<=9?18:L<=12?14:12;
+  const lines=L>9?[name.slice(0,Math.ceil(L/2)),name.slice(Math.ceil(L/2))]:[name];
+  const ty=lines.length>1?[92,92+fs*1.15]:[100+fs*.35];
+  const date=v?fmtDate(v.ts):'';
+  return `<svg viewBox="0 0 200 200" role="img" aria-label="${esc(s.n)}の御朱印"><g transform="rotate(${rot} 100 100)" fill="none" stroke="${col}" opacity=".9">
+  <circle cx="100" cy="100" r="92" stroke-width="6"/><circle cx="100" cy="100" r="80" stroke-width="1.5"/>
+  <path id="a${s.id}" d="M38 100a62 62 0 0 1 124 0" stroke="none"/>
+  <text fill="${col}" stroke="none" font-family="Zen Old Mincho,serif" font-weight="900" font-size="15" letter-spacing="3"><textPath href="#a${s.id}" startOffset="50%" text-anchor="middle">${esc(CAT[s.c].n)}・${esc(s.p.replace(/[都県]$/,''))}</textPath></text>
+  ${lines.map((t,i)=>`<text x="100" y="${ty[i]}" fill="${col}" stroke="none" text-anchor="middle" font-family="Zen Old Mincho,serif" font-weight="900" font-size="${fs}">${esc(t)}</text>`).join('')}
+  <line x1="56" y1="140" x2="144" y2="140" stroke-width="1.2"/>
+  <text x="100" y="160" fill="${col}" stroke="none" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-weight="700" font-size="13">${esc(date)}${v&&v.manual?' 記':''}</text>
+  </g></svg>`}
+
+/* ---- 地図 ---- */
+const map=L.map('map',{zoomControl:false}).setView([35.9,139.5],8);
+const rend=L.canvas({tolerance:14,padding:.3});
+const BASE={
+ '標準（OSM）':L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'}),
+ '地理院 標準':L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',{maxZoom:18,attribution:'<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'}),
+ '地理院 淡色':L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',{maxZoom:18,attribution:'<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'}),
+ '航空写真':L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg',{maxZoom:18,attribution:'<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">地理院タイル</a>'})};
+let baseName='標準（OSM）';try{const b=localStorage.getItem('goshuin-base');if(b&&BASE[b])baseName=b}catch(e){}
+BASE[baseName].addTo(map);
+L.control.layers(BASE,null,{position:'topright'}).addTo(map);
+map.on('baselayerchange',e=>{try{localStorage.setItem('goshuin-base',e.name)}catch(_){}});
+const layer=L.layerGroup().addTo(map),labels=L.layerGroup().addTo(map);let sel=null;let meMarker=null,mePos=null;
+const filt={cats:new Set(['m','d','f']),onlyNew:false,pref:''};
+const shown=s=>filt.cats.has(s.c)&&(!filt.onlyNew||!visits.has(s.id))&&(!filt.pref||s.p===filt.pref);
+function drawMarkers(){
+  layer.clearLayers();
+  for(const s of SPOTS){if(!shown(s))continue;const got=visits.has(s.id),col=CAT[s.c].c;
+    L.circleMarker([s.la,s.lo],{renderer:rend,bubblingMouseEvents:false,radius:got?9:8,color:got?'#fff':col,weight:got?2.5:3,fillColor:got?col:'#fff',fillOpacity:1})
+     .on('click',()=>openSpot(s.id)).addTo(layer)}
+  $('#count').textContent=`${visits.size} / ${SPOTS.length} 印`;drawLabels();
+}
+/* ズーム11以上で画面内のスポット名を常時表示 */
+function drawLabels(){
+  labels.clearLayers();if(map.getZoom()<11)return;const b=map.getBounds().pad(.1);let n=0;
+  for(const s of SPOTS){if(!shown(s)||!b.contains([s.la,s.lo]))continue;if(++n>120)break;
+    const nm=s.c==='m'?s.n.replace(/^道の駅\s*/,''):s.n;
+    L.marker([s.la,s.lo],{icon:L.divIcon({className:'lbl',html:`<span style="--c:${CAT[s.c].c}">${esc(nm)}</span>`,iconSize:null,iconAnchor:[-12,10]}),bubblingMouseEvents:false,keyboard:false})
+     .on('click',()=>openSpot(s.id)).addTo(labels)}}
+map.on('moveend zoomend',drawLabels);
+function highlight(s){if(sel){map.removeLayer(sel);sel=null}if(s)sel=L.circleMarker([s.la,s.lo],{radius:15,color:CAT[s.c].c,weight:3,fill:false,interactive:false}).addTo(map)}
+for(const p of PREFS)$('#prefSel').insertAdjacentHTML('beforeend',`<option>${p}</option>`);
+$('#filters').addEventListener('click',e=>{const b=e.target.closest('button.chip');if(!b)return;
+  if(b.dataset.cat){const c=b.dataset.cat;filt.cats.has(c)?filt.cats.delete(c):filt.cats.add(c);b.setAttribute('aria-pressed',filt.cats.has(c))}
+  else if(b.id==='onlyNew'){filt.onlyNew=!filt.onlyNew;b.setAttribute('aria-pressed',filt.onlyNew)}
+  drawMarkers();renderBook()});
+$('#prefSel').addEventListener('change',e=>{filt.pref=e.target.value;drawMarkers();renderBook();
+  const pts=SPOTS.filter(shown).map(s=>[s.la,s.lo]);if(pts.length)map.fitBounds(pts,{padding:[30,30]})});
+$('#locate').addEventListener('click',async()=>{try{const c=await getPos();mePos=c;
+  if(!meMarker)meMarker=L.marker([c.latitude,c.longitude],{icon:L.divIcon({className:'',html:'<div class="me"></div>',iconSize:[22,22]}),interactive:false}).addTo(map);
+  else meMarker.setLatLng([c.latitude,c.longitude]);map.setView([c.latitude,c.longitude],Math.max(map.getZoom(),11))}catch(e){toast(e.message)}});
+map.on('click',()=>closeSheet());
+
+/* ---- シート ---- */
+const sheet=$('#sheet'),body=$('#sheetBody');let cur=null,pendingPhoto=null;
+function closeSheet(){sheet.classList.remove('on');cur=null;highlight(null)}
+function openSpot(id){
+  const s=byId[id];cur=id;pendingPhoto=null;highlight(s);const v=visits.get(id),cat=CAT[s.c];
+  const nav=`https://www.google.com/maps/dir/?api=1&destination=${s.la},${s.lo}&travelmode=driving`;
+  const far=mePos?`<span> · ここから約${fmtD(dist(mePos.latitude,mePos.longitude,s.la,s.lo))}</span>`:'';
+  body.innerHTML=`<span class="cat" style="--c:${cat.c}">${cat.n}</span>
+  <h2>${esc(s.n)}</h2><div class="meta">${esc(s.p)} ${esc(s.t)}${s.rv?' · '+esc(s.rv):''}${far}</div>
+  ${s.x?`<div class="meta" style="margin-top:4px">${esc(s.x)}</div>`:''}
+  ${v?`<div class="got"><div style="width:120px;flex:none">${stamp(s,v)}</div><div><b>${fmtDate(v.ts)} に獲得</b><div class="meta">${v.manual?'手動記録':'現地で記録（'+fmtD(v.dist)+'）'}</div>${v.memo?`<p style="margin:6px 0 0">${esc(v.memo)}</p>`:''}</div></div>${v.photo?'<img id="gotImg" alt="記録写真" style="width:100%;border-radius:10px;margin-top:12px">':''}
+  <div class="row"><a class="btn ghost" href="${nav}" target="_blank" rel="noopener">ナビ</a><button class="btn ghost" id="del">記録を消す</button></div>`
+  :`<div class="row"><button class="btn pri" id="check">御朱印をいただく</button><a class="btn" href="${nav}" target="_blank" rel="noopener">ナビで向かう</a>${s.u&&s.u.startsWith('https://')?`<a class="btn ghost" href="${esc(s.u)}" target="_blank" rel="noopener">公式情報</a>`:''}</div>
+  <div class="msg" id="msg"></div><div id="form"></div>`}`;
+  sheet.classList.add('on');
+  if(v&&v.photo){const u=URL.createObjectURL(v.photo);const im=$('#gotImg');im.onload=()=>URL.revokeObjectURL(u);im.src=u}
+  $('#check')?.addEventListener('click',()=>checkIn(s));
+  $('#del')?.addEventListener('click',()=>confirmDel(s));
+}
+async function checkIn(s){
+  const msg=$('#msg'),b=$('#check');b.disabled=true;msg.textContent='現在地を確認しています…';
+  try{const c=await getPos();mePos=c;const d=dist(c.latitude,c.longitude,s.la,s.lo);
+    if(d<=s.r+Math.min(c.accuracy||0,300)){msg.textContent=`到着を確認しました（${fmtD(d)}）。写真とひとことを残せます。`;showForm(s,{dist:d,lat:c.latitude,lon:c.longitude,manual:false})}
+    else{msg.innerHTML=`まだ少し遠いようです（あと約${fmtD(d-s.r)}）。<br>現地にいるのに判定されない場合は、登録位置のずれかもしれません。`;
+      $('#form').innerHTML='<div class="row"><button class="btn ghost" id="manual">手動で記録する</button></div>';
+      $('#manual').onclick=()=>showForm(s,{dist:d,lat:c.latitude,lon:c.longitude,manual:true})}
+  }catch(e){msg.textContent=e.message;$('#form').innerHTML='<div class="row"><button class="btn ghost" id="manual">手動で記録する</button></div>';$('#manual').onclick=()=>showForm(s,{dist:null,manual:true})}
+  b.disabled=false}
+function showForm(s,info){
+  $('#form').innerHTML=`<label class="f">写真（任意）</label><div class="photo"><img id="pv" hidden alt=""><label class="btn ghost" style="flex:0 1 auto">写真を選ぶ<input type="file" id="ph" accept="image/*" hidden></label></div>
+  <label class="f" for="memo">ひとこと（任意）</label><textarea id="memo" maxlength="300" placeholder="ソフトクリームが濃厚だった、など"></textarea>
+  <div class="row"><button class="btn pri" id="save">印をいただく</button></div>${info.manual?'<p class="meta">手動記録には印に「記」が付きます。</p>':''}`;
+  $('#ph').onchange=async e=>{const f=e.target.files[0];if(!f)return;pendingPhoto=await resize(f);if(pendingPhoto){const im=$('#pv');im.src=URL.createObjectURL(pendingPhoto);im.hidden=false}};
+  $('#save').onclick=async()=>{const v={id:s.id,ts:Date.now(),memo:$('#memo').value.trim(),photo:pendingPhoto,...info};
+    try{await putVisit(v)}catch(e){toast('保存できませんでした');return}
+    closeSheet();drawMarkers();renderBook();renderStat();press(s,v)}}
+function press(s,v){const fx=$('#fx');fx.innerHTML=stamp(s,v);fx.classList.add('on');if(navigator.vibrate)navigator.vibrate(40);setTimeout(()=>fx.classList.remove('on'),1300)}
+function confirmDel(s){$('#dlgMsg').textContent=`「${s.n}」の記録（写真・メモ含む）を消しますか？`;$('#dlg').classList.add('on');
+  $('#dlgNo').onclick=()=>$('#dlg').classList.remove('on');
+  $('#dlgYes').onclick=async()=>{$('#dlg').classList.remove('on');await delVisit(s.id);closeSheet();drawMarkers();renderBook();renderStat();toast('記録を消しました')}}
+
+/* ---- 帳面 ---- */
+let bookCat='';
+function renderBook(){
+  const list=[...visits.values()].filter(v=>byId[v.id]&&(!bookCat||byId[v.id].c===bookCat)).sort((a,b)=>b.ts-a.ts);
+  $('#bookLead').textContent=`${visits.size}の印を集めました`;
+  $('#bookSeg').innerHTML=[['','すべて'],['m','道の駅'],['d','ダム'],['f','牧場']].map(([k,n])=>`<button class="chip" data-k="${k}" style="--c:${k?CAT[k].c:'var(--ink)'}" aria-pressed="${bookCat===k}">${n}</button>`).join('');
+  $('#book').innerHTML=list.length?list.map(v=>{const s=byId[v.id];return `<div class="page" data-id="${s.id}" role="button" tabindex="0">${stamp(s,v)}<p>${esc(s.n)}</p></div>`}).join('')
+  :'<div class="empty">まだ印がありません。<br>地図からスポットを選んで、現地で御朱印をいただきましょう。</div>'}
+$('#bookSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;bookCat=b.dataset.k;renderBook()});
+$('#book').addEventListener('click',e=>{const p=e.target.closest('.page');if(!p)return;const s=byId[p.dataset.id];go('map');map.setView([s.la,s.lo],13);openSpot(s.id)});
+
+/* ---- 達成率 ---- */
+function renderStat(){
+  const cnt=(f)=>{const a=SPOTS.filter(f);return[a.filter(s=>visits.has(s.id)).length,a.length]};
+  $('#total').innerHTML=['m','d','f'].map(c=>{const[g,t]=cnt(s=>s.c===c);return `<div class="tot" style="--c:${CAT[c].c}"><span>${CAT[c].n}</span><b>${g}</b><span>/ ${t}（${t?Math.round(g/t*100):0}%）</span></div>`}).join('');
+  $('#prefs').innerHTML=PREFS.map(p=>{const[g,t]=cnt(s=>s.p===p);
+    return `<div class="pref"><h4>${p}<span>${g} / ${t}</span></h4>${['m','d','f'].map(c=>{const[a,b]=cnt(s=>s.p===p&&s.c===c);if(!b)return '';return `<div class="bar" style="--c:${CAT[c].c}"><span>${CAT[c].n}</span><div><i style="width:${a/b*100}%"></i></div><em>${a}/${b}</em></div>`}).join('')}</div>`}).join('')}
+
+/* ---- バックアップ ---- */
+const b2d=b=>new Promise(ok=>{const r=new FileReader();r.onload=()=>ok(r.result);r.readAsDataURL(b)});
+$('#exp').addEventListener('click',async()=>{const arr=[];for(const v of visits.values())arr.push({...v,photo:v.photo?await b2d(v.photo):null});
+  const blob=new Blob([JSON.stringify({app:'touring-goshuin',ver:1,visits:arr})],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`goshuin-${fmtDate(Date.now()).replace(/\./g,'')}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),5000)});
+$('#imp').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());let n=0;
+  for(const v of j.visits||[]){if(!byId[v.id]||typeof v.ts!=='number')continue;if(v.photo)v.photo=await (await fetch(v.photo)).blob();v.memo=String(v.memo||'');await putVisit(v);n++}
+  drawMarkers();renderBook();renderStat();toast(`${n}件の記録を読み込みました`)}catch(err){toast('読み込めませんでした')}e.target.value=''});
+
+/* ---- タブ ---- */
+function go(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===v));
+  $('#filters').style.display=v==='map'?'':'none';closeSheet();if(v==='map')setTimeout(()=>map.invalidateSize(),0)}
+document.querySelector('nav').addEventListener('click',e=>{const b=e.target.closest('button');if(b)go(b.dataset.v)});
+
+openDB().then(loadAll).catch(()=>toast('記録の保存領域を開けませんでした')).finally(()=>{drawMarkers();renderBook();renderStat()});
+if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();
+}
+</script>
+</body>
+</html>
