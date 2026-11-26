@@ -38,7 +38,22 @@ h1 small{font:400 12px "Noto Sans JP";color:var(--sub);margin-left:auto}
 .chip i{width:10px;height:10px;border-radius:50%;background:var(--c)}
 .chip[aria-pressed=true]{border-color:var(--c,var(--ink));background:color-mix(in srgb,var(--c,var(--ink)) 12%,transparent);font-weight:700}
 .chip select{border:0;background:transparent;font-size:14px;padding:0}
-main{position:relative;overflow:hidden}
+main{position:relative;overflow:hidden;isolation:isolate}
+header{position:relative}
+.sbox{position:relative;margin:0 0 6px}
+.sbox input{width:100%;min-height:40px;border:1.5px solid var(--line);border-radius:999px;padding:6px 40px 6px 36px;background:var(--bg);font-size:16px;-webkit-appearance:none;appearance:none}
+.sbox input::-webkit-search-cancel-button{display:none}
+.sbox>svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--sub);pointer-events:none}
+.sbox .clr{position:absolute;right:2px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:none;color:var(--sub);font-size:20px;cursor:pointer}
+.sres{position:absolute;left:8px;right:8px;top:100%;margin-top:4px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 6px 20px #0003;max-height:60vh;overflow:auto;z-index:2;display:none}
+.sres.on{display:block}
+.sres button{display:flex;align-items:center;gap:10px;width:100%;border:0;border-bottom:1px solid var(--line);background:none;text-align:left;padding:10px 14px;min-height:52px;cursor:pointer}
+.sres button:last-child{border-bottom:0}
+.sres i{flex:none;width:10px;height:10px;border-radius:50%;background:var(--c)}
+.sres b{display:block;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sres span{display:block;font-size:12px;color:var(--sub)}
+.sres em{margin-left:auto;flex:none;font-style:normal;font-size:12px;font-weight:700;color:var(--acc)}
+.sres p{margin:0;padding:14px;color:var(--sub);font-size:14px}
 .view{position:absolute;inset:0;overflow:auto;display:none}
 .view.on{display:block}
 #map{position:absolute;inset:0;background:var(--bg)}
@@ -112,6 +127,7 @@ textarea{width:100%;min-height:70px;border:1.5px solid var(--line);border-radius
 <div class="app">
 <header>
   <h1><span class="seal">印</span>ツーリング御朱印帳<small id="count"></small></h1>
+  <div class="sbox"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><input type="search" id="q" placeholder="名前・市町村でさがす" aria-label="スポットを検索" autocomplete="off" enterkeyhint="search"><button class="clr" id="qClr" aria-label="検索をクリア" hidden>×</button></div>
   <div class="chips" id="filters">
     <button class="chip" data-cat="m" style="--c:var(--m)" aria-pressed="true"><i></i>道の駅</button>
     <button class="chip" data-cat="d" style="--c:var(--d)" aria-pressed="true"><i></i>ダム</button>
@@ -119,6 +135,7 @@ textarea{width:100%;min-height:70px;border:1.5px solid var(--line);border-radius
     <button class="chip" id="onlyNew" aria-pressed="false">未獲得のみ</button>
     <label class="chip"><select id="prefSel" aria-label="都県"><option value="">全都県</option></select></label>
   </div>
+  <div class="sres" id="sres" role="listbox" aria-label="検索結果"></div>
 </header>
 <main>
   <section class="view on" id="v-map"><div id="map"></div><button class="fab" id="locate" aria-label="現在地"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></button></section>
@@ -306,6 +323,30 @@ $('#exp').addEventListener('click',async()=>{const arr=[];for(const v of visits.
 $('#imp').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());let n=0;
   for(const v of j.visits||[]){if(!byId[v.id]||typeof v.ts!=='number')continue;if(v.photo)v.photo=await (await fetch(v.photo)).blob();v.memo=String(v.memo||'');await putVisit(v);n++}
   drawMarkers();renderBook();renderStat();toast(`${n}件の記録を読み込みました`)}catch(err){toast('読み込めませんでした')}e.target.value=''});
+
+/* ---- 検索 ---- */
+/* 全角半角・カタカナひらがな・空白の違いを吸収して部分一致 */
+const norm=t=>String(t||'').normalize('NFKC').toLowerCase().replace(/[\u30a1-\u30f6]/g,c=>String.fromCharCode(c.charCodeAt(0)-0x60)).replace(/[\s・･]/g,'');
+const IDX=SPOTS.map(s=>({s,n:norm(s.n),a:norm(s.p+s.t)}));
+const qEl=$('#q'),sres=$('#sres');
+function search(){
+  const raw=qEl.value.trim();$('#qClr').hidden=!raw;
+  if(!raw){sres.classList.remove('on');sres.innerHTML='';return}
+  const ws=raw.split(/\s+/).map(norm).filter(Boolean);
+  const hit=IDX.filter(o=>ws.every(w=>o.n.includes(w)||o.a.includes(w)))
+    .map(o=>({s:o.s,k:(o.n.includes(ws[0])?0:1)*1e9+(mePos?dist(mePos.latitude,mePos.longitude,o.s.la,o.s.lo):0)}))
+    .sort((a,b)=>a.k-b.k);
+  sres.innerHTML=hit.length?hit.slice(0,40).map(({s})=>`<button role="option" data-id="${s.id}"><i style="--c:${CAT[s.c].c}"></i><div style="min-width:0"><b>${esc(s.n)}</b><span>${CAT[s.c].n} · ${esc(s.p)} ${esc(s.t)}${mePos?' · 約'+fmtD(dist(mePos.latitude,mePos.longitude,s.la,s.lo)):''}</span></div>${visits.has(s.id)?'<em>獲得済</em>':''}</button>`).join('')+(hit.length>40?`<p>ほか${hit.length-40}件。ことばを足して絞り込めます</p>`:'')
+    :'<p>見つかりませんでした</p>';
+  sres.classList.add('on');sres.scrollTop=0;
+}
+qEl.addEventListener('input',search);
+qEl.addEventListener('focus',()=>{if(qEl.value.trim())search()});
+qEl.addEventListener('keydown',e=>{if(e.key==='Enter'){const b=sres.querySelector('button');if(b)b.click()}else if(e.key==='Escape'){sres.classList.remove('on');qEl.blur()}});
+$('#qClr').addEventListener('click',()=>{qEl.value='';search();qEl.focus()});
+sres.addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(!b)return;const s=byId[b.dataset.id];
+  sres.classList.remove('on');qEl.blur();go('map');map.setView([s.la,s.lo],Math.max(map.getZoom(),13));openSpot(s.id)});
+document.addEventListener('pointerdown',e=>{if(!e.target.closest('.sbox,.sres'))sres.classList.remove('on')});
 
 /* ---- タブ ---- */
 function go(v){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id==='v-'+v));document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',b.dataset.v===v));
