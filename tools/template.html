@@ -135,7 +135,7 @@ textarea{width:100%;min-height:70px;border:1.5px solid var(--line);border-radius
       <h3 style="font-size:16px">記録のバックアップ</h3>
       <p class="lead">記録はこの端末のブラウザ内に保存されています。機種変更やブラウザのデータ削除に備えて、ときどき書き出してください（写真も含みます）。</p>
       <div class="row"><button class="btn" id="exp">書き出す</button><label class="btn ghost">読み込む<input type="file" id="imp" accept="application/json" hidden></label></div>
-      <p class="lead" style="margin-top:14px">地図：地理院タイル／データ：国土数値情報（道の駅 2018年、ダム 2014年）、牧場は手動選定。新しい施設は未収録の場合があります。</p>
+      <p class="lead" style="margin-top:14px">地図：地理院タイル／データ：道の駅は国土数値情報（2018年）。ダムは国交省「ダムカード配布場所一覧」（2026年1月時点）に載る見学可能なもの。牧場は営業を確認した観光牧場。新しい施設は未収録の場合があります。</p>
     </div>
   </div></section>
 </main>
@@ -248,6 +248,7 @@ function openSpot(id){
   body.innerHTML=`<span class="cat" style="--c:${cat.c}">${cat.n}</span>
   <h2>${esc(s.n)}</h2><div class="meta">${esc(s.p)} ${esc(s.t)}${s.rv?' · '+esc(s.rv):''}${far}</div>
   ${s.x?`<div class="meta" style="margin-top:4px">${esc(s.x)}</div>`:''}
+  ${s.k?`<div class="meta" style="margin-top:4px">${esc(s.k)}</div>`:''}
   ${v?`<div class="got"><div style="width:120px;flex:none">${stamp(s,v)}</div><div><b>${fmtDate(v.ts)} に獲得</b><div class="meta">${v.manual?'手動記録':'現地で記録（'+fmtD(v.dist)+'）'}</div>${v.memo?`<p style="margin:6px 0 0">${esc(v.memo)}</p>`:''}</div></div>${v.photo?'<img id="gotImg" alt="記録写真" style="width:100%;border-radius:10px;margin-top:12px">':''}
   <div class="row"><a class="btn ghost" href="${nav}" target="_blank" rel="noopener">ナビ</a><button class="btn ghost" id="del">記録を消す</button></div>`
   :`<div class="row"><button class="btn pri" id="check">御朱印をいただく</button><a class="btn" href="${nav}" target="_blank" rel="noopener">ナビで向かう</a>${s.u&&s.u.startsWith('https://')?`<a class="btn ghost" href="${esc(s.u)}" target="_blank" rel="noopener">公式情報</a>`:''}</div>

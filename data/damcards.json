@@ -1,0 +1,1416 @@
+[
+ {
+  "no": 151,
+  "name": "竜神ダム",
+  "pref": "茨城県",
+  "river": "竜神川",
+  "card_places": [
+   "竜神ダム管理事務所",
+   "竜神カフェ"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.ibaraki.jp/doboku/kasen/dam/dam/damcard.html\n\n②\nhttp://www.kanko-hitachiota.com/page/page001189.html",
+  "w01": "d570"
+ },
+ {
+  "no": 152,
+  "name": "藤井川ダム",
+  "pref": "茨城県",
+  "river": "藤井川",
+  "card_places": [
+   "藤井川ダム管理事務所",
+   "城里町健康増進施設ホロルの湯"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.ibaraki.jp/doboku/kasen/dam/dam/damcard.html\n\n②\nhttps://www.hororunoyu.jp/",
+  "w01": "d571"
+ },
+ {
+  "no": 153,
+  "name": "飯田ダム",
+  "pref": "茨城県",
+  "river": "飯田川",
+  "card_places": [
+   "飯田ダム管理事務所",
+   "かさま歴史交流館井筒屋"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.ibaraki.jp/doboku/kasen/dam/dam/damcard.html\n\n②\nhttps://www.kasamaidutsuya.com/",
+  "w01": "d575"
+ },
+ {
+  "no": 154,
+  "name": "水沼ダム",
+  "pref": "茨城県",
+  "river": "花園川",
+  "card_places": [
+   "水沼ダム管理事務所",
+   "公共の宿マウントあかね"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.ibaraki.jp/doboku/kasen/dam/dam/damcard.html\n\n②\nhttps://www.mountakane.com/shukuhaku.html",
+  "w01": "d567"
+ },
+ {
+  "no": 155,
+  "name": "花貫ダム",
+  "pref": "茨城県",
+  "river": "花貫川",
+  "card_places": [
+   "花貫ダム管理事務所",
+   "花貫ふるさと自然公園センター"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.ibaraki.jp/doboku/kasen/dam/dam/damcard.html\n\n②\nhttp://www.takahagi-kanko.jp/page/page000325.html",
+  "w01": "d568"
+ },
+ {
+  "no": 156,
+  "name": "十王ダム",
+  "pref": "茨城県",
+  "river": "十王川",
+  "card_places": [
+   "十王ダム管理事務所",
+   "茨城県県北生涯学習センター"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.ibaraki.jp/doboku/kasen/dam/dam/damcard.html\n\n②\nhttps://www.kenpoku.gakusyu.ibk.ed.jp/",
+  "w01": "d569"
+ },
+ {
+  "no": 157,
+  "name": "小山ダム",
+  "pref": "茨城県",
+  "river": "大北川",
+  "card_places": [
+   "小山ダム管理事務所"
+  ],
+  "card_notes": [],
+  "url": "http://www.pref.ibaraki.jp/doboku/kasen/dam/dam/damcard.html",
+  "w01": "d566"
+ },
+ {
+  "no": 160,
+  "name": "楮川ダム",
+  "pref": "茨城県",
+  "river": "楮川",
+  "card_places": [
+   "水戸市上下水道局水道部浄水管理事務所"
+  ],
+  "card_notes": [],
+  "url": "https://www.city.mito.lg.jp/site/jougesuidou/6079.html",
+  "w01": "d574"
+ },
+ {
+  "no": 161,
+  "name": "川治ダム",
+  "pref": "栃木県",
+  "river": "鬼怒川",
+  "card_places": [
+   "川治ダム管理支所",
+   "川治ダム資料館２階"
+  ],
+  "card_notes": [
+   "冬期は閉鎖・配布休止あり"
+  ],
+  "url": "http://www.ktr.mlit.go.jp/kinudamu",
+  "w01": "d550"
+ },
+ {
+  "no": 162,
+  "name": "五十里ダム",
+  "pref": "栃木県",
+  "river": "男鹿川",
+  "card_places": [
+   "五十里ダム管理支所",
+   "道の駅　湯西川"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.ktr.mlit.go.jp/kinudamu/\n②\nhttp://www.nikko-kankou.org/spot/91/",
+  "w01": "d555"
+ },
+ {
+  "no": 163,
+  "name": "川俣ダム",
+  "pref": "栃木県",
+  "river": "鬼怒川",
+  "card_places": [
+   "川俣ダム管理支所"
+  ],
+  "card_notes": [
+   "冬期は閉鎖・配布休止あり"
+  ],
+  "url": "http://www.ktr.mlit.go.jp/kinudamu/",
+  "w01": "d548"
+ },
+ {
+  "no": 164,
+  "name": "湯西川ダム",
+  "pref": "栃木県",
+  "river": "湯西川",
+  "card_places": [
+   "湯西川ダム管理支所",
+   "湯西川水の郷観光センター"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.ktr.mlit.go.jp/kinudamu/\n②\nhttps://yunishigawa-mizunosato.jp/",
+  "w01": "d556"
+ },
+ {
+  "no": 166,
+  "name": "沼原ダム",
+  "pref": "栃木県",
+  "river": "那珂川",
+  "card_places": [
+   "森の発電おはなし館"
+  ],
+  "card_notes": [
+   "冬期は閉鎖・配布休止あり"
+  ],
+  "url": "http://www.jpower.co.jp/damcard/numappara.html",
+  "w01": "d543"
+ },
+ {
+  "no": 167,
+  "name": "黒部ダム",
+  "pref": "栃木県",
+  "river": "鬼怒川",
+  "card_places": [
+   "栗山ふるさと物産センター",
+   "高野商店"
+  ],
+  "card_notes": [
+   "冬期は閉鎖・配布休止あり",
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①\nhttps://www.tochigiji.or.jp/spot/s9055/\n（とちぎ旅ネット）",
+  "w01": "d549"
+ },
+ {
+  "no": 168,
+  "name": "中岩ダム",
+  "pref": "栃木県",
+  "river": "鬼怒川",
+  "card_places": [
+   "道の駅日光　日光街道ニコニコ本陣 観光情報館"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています"
+  ],
+  "url": "https://www.nikko-honjin.jp/about",
+  "w01": "d552"
+ },
+ {
+  "no": 169,
+  "name": "今市ダム",
+  "pref": "栃木県",
+  "river": "砥川",
+  "card_places": [
+   "道の駅日光　日光街道ニコニコ本陣 観光情報館"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "https://www.nikko-honjin.jp/about",
+  "w01": "d560"
+ },
+ {
+  "no": 170,
+  "name": "栗山ダム",
+  "pref": "栃木県",
+  "river": "ベネ沢川",
+  "card_places": [
+   "栗山ふるさと物産センター",
+   "高野商店"
+  ],
+  "card_notes": [
+   "冬期は閉鎖・配布休止あり",
+   "配布場所はダムから離れています"
+  ],
+  "url": "①\n\nhttps://www.tochigiji.or.jp/spot/s9055/\n（とちぎ旅ネット）",
+  "w01": "d559"
+ },
+ {
+  "no": 171,
+  "name": "南摩ダム",
+  "pref": "栃木県",
+  "river": "南摩川",
+  "card_places": [
+   "思川開発建設所",
+   "まちの駅　新鹿沼宿",
+   "スノーピーク鹿沼キャンプフィールド＆スパ"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://www.water.go.jp/kanto/omoigawa/\n\n②\nhttp://kanumajuku.com/\n\n③\nhttps://sbs.snowpeak.co.jp/kanuma/",
+  "w01": "d546"
+ },
+ {
+  "no": 172,
+  "name": "中禅寺ダム",
+  "pref": "栃木県",
+  "river": "大谷川",
+  "card_places": [
+   "中禅寺ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.tochigi.lg.jp/h07/panhuretto.html",
+  "pos": [
+   36.76667,
+   139.43094
+  ]
+ },
+ {
+  "no": 173,
+  "name": "三河沢ダム",
+  "pref": "栃木県",
+  "river": "三河沢川",
+  "card_places": [
+   "日光市湯西川観光センター",
+   "「湯西川水の郷」"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.tochigi.lg.jp/h07/panhuretto.html",
+  "w01": "d557"
+ },
+ {
+  "no": 174,
+  "name": "小網ダム",
+  "pref": "栃木県",
+  "river": "鬼怒川",
+  "card_places": [
+   "企業局小網ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.tochigi.lg.jp/j51/damcard/damcard.html",
+  "w01": "d551"
+ },
+ {
+  "no": 175,
+  "name": "庚申ダム",
+  "pref": "栃木県",
+  "river": "庚申川",
+  "card_places": [
+   "企業局庚申ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.tochigi.lg.jp/j51/damcard/damcard.html",
+  "w01": "d544"
+ },
+ {
+  "no": 176,
+  "name": "佐貫頭首工",
+  "pref": "栃木県",
+  "river": "鬼怒川",
+  "card_places": [
+   "佐貫ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.tochigi.lg.jp/j51/damcard/damcard.html",
+  "pos": [
+   36.74894,
+   139.79792
+  ]
+ },
+ {
+  "no": 177,
+  "name": "西荒川ダム",
+  "pref": "栃木県",
+  "river": "西荒川",
+  "card_places": [
+   "西荒川ダム管理所",
+   "矢板土木事務所"
+  ],
+  "card_notes": [
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "https://www.pref.tochigi.lg.jp/h07/panhuretto.html",
+  "w01": "d540"
+ },
+ {
+  "no": 178,
+  "name": "塩原ダム",
+  "pref": "栃木県",
+  "river": "箒川",
+  "card_places": [
+   "塩原ダム管理所",
+   "矢板土木事務所"
+  ],
+  "card_notes": [
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "https://www.pref.tochigi.lg.jp/h07/panhuretto.html",
+  "w01": "d535"
+ },
+ {
+  "no": 179,
+  "name": "寺山ダム",
+  "pref": "栃木県",
+  "river": "宮川",
+  "card_places": [
+   "寺山ダム管理所",
+   "矢板土木事務所"
+  ],
+  "card_notes": [
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "https://www.pref.tochigi.lg.jp/h07/panhuretto.html",
+  "w01": "d542"
+ },
+ {
+  "no": 180,
+  "name": "東荒川ダム",
+  "pref": "栃木県",
+  "river": "荒川",
+  "card_places": [
+   "東荒川ダム管理所",
+   "矢板土木事務所"
+  ],
+  "card_notes": [
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "https://www.pref.tochigi.lg.jp/h07/panhuretto.html",
+  "w01": "d539"
+ },
+ {
+  "no": 181,
+  "name": "松田川ダム",
+  "pref": "栃木県",
+  "river": "松田川",
+  "card_places": [
+   "松田川ダム管理所",
+   "安足土木事務所"
+  ],
+  "card_notes": [
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "https://www.pref.tochigi.lg.jp/h07/panhuretto.html",
+  "w01": "d545"
+ },
+ {
+  "no": 182,
+  "name": "品木ダム",
+  "pref": "群馬県",
+  "river": "湯川",
+  "card_places": [
+   "品木ダム水質管理所"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています"
+  ],
+  "url": "http://www.ktr.mlit.go.jp/sinaki/",
+  "w01": "d597"
+ },
+ {
+  "no": 183,
+  "name": "相俣ダム",
+  "pref": "群馬県",
+  "river": "赤谷川",
+  "card_places": [
+   "相俣ダム管理支所"
+  ],
+  "card_notes": [],
+  "url": "http://www.ktr.mlit.go.jp/tonedamu/",
+  "w01": "d588"
+ },
+ {
+  "no": 184,
+  "name": "藤原ダム",
+  "pref": "群馬県",
+  "river": "利根川",
+  "card_places": [
+   "藤原ダム管理支所"
+  ],
+  "card_notes": [],
+  "url": "http://www.ktr.mlit.go.jp/tonedamu/",
+  "w01": "d585"
+ },
+ {
+  "no": 185,
+  "name": "薗原ダム",
+  "pref": "群馬県",
+  "river": "片品川",
+  "card_places": [
+   "薗原ダム管理支所"
+  ],
+  "card_notes": [],
+  "url": "http://www.ktr.mlit.go.jp/tonedamu/",
+  "w01": "d591"
+ },
+ {
+  "no": 186,
+  "name": "八ッ場ダム",
+  "pref": "群馬県",
+  "river": "吾妻川",
+  "card_places": [
+   "なるほど！やんば資料館",
+   "道の駅八ッ場ふるさと館",
+   "長野原・草津・六合ステーション"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①\nhttps://www.ktr.mlit.go.jp/tonedamu/tonedamu00572.html\n\n②\nhttp://yambamichinoeki.com/\n\n③\nhttps://www.town.naganohara.gunma.jp/www/contents/1438155584776/\n\n④\nhttps://asama-sakagura.co.jp/\n\n⑤\nhttps://yanbadam.com/facility\n\n⑥\nhttp://www.kita-karuizawa.jp/\n\n⑦\nhttps://agatsumakyo.jp/",
+  "w01": "d594"
+ },
+ {
+  "no": 187,
+  "name": "草木ダム",
+  "pref": "群馬県",
+  "river": "渡良瀬川",
+  "card_places": [
+   "渡良瀬川ダム総合管理所"
+  ],
+  "card_notes": [],
+  "url": "https://www.water.go.jp/kanto/watarase/",
+  "w01": "d622"
+ },
+ {
+  "no": 188,
+  "name": "奈良俣ダム",
+  "pref": "群馬県",
+  "river": "楢俣川",
+  "card_places": [
+   "奈良俣ダム管理所",
+   "※ダムカード配布場所とダムは離れた場所にありますのでご注意願います。",
+   "道の駅水紀行館"
+  ],
+  "card_notes": [
+   "冬期は閉鎖・配布休止あり",
+   "配布場所はダムから離れています"
+  ],
+  "url": "①\nhttps://www.water.go.jp/kanto/numata/\n\n②\nhttps://mizunofurusato.com/",
+  "w01": "d587"
+ },
+ {
+  "no": 189,
+  "name": "矢木沢ダム",
+  "pref": "群馬県",
+  "river": "利根川",
+  "card_places": [
+   "矢木沢ダム管理所"
+  ],
+  "card_notes": [
+   "冬期は閉鎖・配布休止あり"
+  ],
+  "url": "https://www.water.go.jp/kanto/numata/",
+  "w01": "d582"
+ },
+ {
+  "no": 190,
+  "name": "霧積ダム",
+  "pref": "群馬県",
+  "river": "霧積川",
+  "card_places": [
+   "霧積ダム管理事務所",
+   "碓氷峠の森公園交流館",
+   "「峠の湯」"
+  ],
+  "card_notes": [],
+  "url": "①https://www.pref.gunma.jp/06/h40g_00083.html\n\n②http://usui-pass.com/",
+  "w01": "d605"
+ },
+ {
+  "no": 191,
+  "name": "桐生川ダム",
+  "pref": "群馬県",
+  "river": "桐生川",
+  "card_places": [
+   "桐生川ダム管理事務所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.gunma.jp/06/h40g_00083.html",
+  "w01": "d626"
+ },
+ {
+  "no": 192,
+  "name": "道平川ダム",
+  "pref": "群馬県",
+  "river": "道平川",
+  "card_places": [
+   "道平川ダム管理事務所",
+   "富岡土木事務所",
+   "富岡土木事務所下仁田事業所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.gunma.jp/06/h40g_00083.html",
+  "w01": "d607"
+ },
+ {
+  "no": 193,
+  "name": "屋敷川取水ダム",
+  "pref": "群馬県",
+  "river": "屋敷川",
+  "card_places": [
+   "道平川ダム管理事務所",
+   "富岡土木事務所",
+   "富岡土木事務所下仁田事業所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.gunma.jp/06/h40g_00083.html",
+  "w01": "d610"
+ },
+ {
+  "no": 194,
+  "name": "市野萱川取水ダム",
+  "pref": "群馬県",
+  "river": "市野萱川",
+  "card_places": [
+   "道平川ダム管理事務所",
+   "富岡土木事務所",
+   "富岡土木事務所下仁田事業所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.gunma.jp/06/h40g_00083.html",
+  "w01": "d629"
+ },
+ {
+  "no": 195,
+  "name": "相沢川取水ダム",
+  "pref": "群馬県",
+  "river": "相沢川",
+  "card_places": [
+   "道平川ダム管理事務所",
+   "富岡土木事務所",
+   "富岡土木事務所下仁田事業所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.gunma.jp/06/h40g_00083.html",
+  "w01": "d609"
+ },
+ {
+  "no": 196,
+  "name": "塩沢ダム",
+  "pref": "群馬県",
+  "river": "塩沢川",
+  "card_places": [
+   "塩沢ダム管理事務所",
+   "藤岡土木事務所万場事業所",
+   "神流町観光案内所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.gunma.jp/06/h40g_00083.html",
+  "w01": "d618"
+ },
+ {
+  "no": 197,
+  "name": "坂本ダム",
+  "pref": "群馬県",
+  "river": "碓氷川",
+  "card_places": [
+   "霧積ダム管理事務所",
+   "碓氷峠の森公園交流館",
+   "「峠の湯」"
+  ],
+  "card_notes": [],
+  "url": "①https://www.pref.gunma.jp/06/h40g_00083.html\n\n②http://usui-pass.com/",
+  "w01": "d604"
+ },
+ {
+  "no": 198,
+  "name": "四万川ダム",
+  "pref": "群馬県",
+  "river": "四万川",
+  "card_places": [
+   "四万川ダム管理事務所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.gunma.jp/06/h40g_00083.html",
+  "w01": "d600"
+ },
+ {
+  "no": 199,
+  "name": "大仁田ダム",
+  "pref": "群馬県",
+  "river": "大仁田川",
+  "card_places": [
+   "大仁田ダム管理所",
+   "富岡土木事務所",
+   "富岡土木事務所下仁田事業所"
+  ],
+  "card_notes": [],
+  "url": "①②③https://www.pref.gunma.jp/06/h40g_00083.html\n\n④https://nanmoku.ne.jp/lifehealth/koukyou/oasis/",
+  "w01": "d608"
+ },
+ {
+  "no": 200,
+  "name": "中之条ダム",
+  "pref": "群馬県",
+  "river": "四万川",
+  "card_places": [
+   "吾妻発電事務所",
+   "中之条ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "http://www.pref.gunma.jp/06/q1300021.html",
+  "w01": "d601"
+ },
+ {
+  "no": 201,
+  "name": "平出ダム",
+  "pref": "群馬県",
+  "river": "片品川",
+  "card_places": [
+   "平出ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "http://www.pref.gunma.jp/06/q1300020.html",
+  "w01": "d590"
+ },
+ {
+  "no": 202,
+  "name": "神水ダム",
+  "pref": "群馬県",
+  "river": "神流川",
+  "card_places": [
+   "神水ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "http://www.pref.gunma.jp/06/q1300022.html",
+  "w01": "d617"
+ },
+ {
+  "no": 203,
+  "name": "黒坂石ダム",
+  "pref": "群馬県",
+  "river": "黒坂石川",
+  "card_places": [
+   "渡良瀬発電事務所"
+  ],
+  "card_notes": [],
+  "url": "http://www.pref.gunma.jp/06/q1300023.html",
+  "w01": "d625"
+ },
+ {
+  "no": 204,
+  "name": "高津戸ダム",
+  "pref": "群馬県",
+  "river": "渡良瀬川",
+  "card_places": [
+   "渡良瀬発電事務所"
+  ],
+  "card_notes": [],
+  "url": "http://www.pref.gunma.jp/06/q1300019.html",
+  "w01": "d623"
+ },
+ {
+  "no": 205,
+  "name": "丸沼ダム",
+  "pref": "群馬県",
+  "river": "片品川",
+  "card_places": [
+   "片品村観光協会",
+   "道の駅尾瀬かたしな",
+   "丸沼温泉環湖荘"
+  ],
+  "card_notes": [
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①https://oze-katashina.info/\n②https://oze-katashina.info/michinoeki/\n③https://www.marunuma.com",
+  "w01": "d592"
+ },
+ {
+  "no": 206,
+  "name": "上野ダム",
+  "pref": "群馬県",
+  "river": "神流川",
+  "card_places": [
+   "上野村産業情報センター",
+   "浜平温泉　しおじの湯",
+   "川の駅　ふれあい館"
+  ],
+  "card_notes": [
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "https://uenomura-kankonavi.jp/",
+  "w01": "d615"
+ },
+ {
+  "no": 207,
+  "name": "須田貝ダム",
+  "pref": "群馬県",
+  "river": "利根川",
+  "card_places": [
+   "道の駅みなかみ水紀行館",
+   "ヤマザキ　Ｙショップ　アベ"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①\nhttps://mizunofurusato.com/\n\n②\nhttp://enjoy-minakami.jp/buy.php?itemid=786",
+  "w01": "d584"
+ },
+ {
+  "no": 208,
+  "name": "玉原ダム",
+  "pref": "群馬県",
+  "river": "発知川",
+  "card_places": [
+   "沼田市観光案内所",
+   "たんばらラベンダーパークリゾートセンター",
+   "ヤマザキＹショップ　想いで（沼田駅前）"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①\nhttp://www.city.numata.gunma.jp/kanko/1006513.html\n\n②\nhttps://www.tambara.co.jp/lavenderpark/",
+  "w01": "d589"
+ },
+ {
+  "no": 209,
+  "name": "小森ダム",
+  "pref": "群馬県",
+  "river": "利根川",
+  "card_places": [
+   "道の駅みなかみ水紀行館",
+   "ヤマザキ　Ｙショップ　アベ",
+   "ヤマザキ　Ｙショップ　想いで（沼田駅前）"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①\nhttps://mizunofurusato.com/\n\n②\nhttp://enjoy-minakami.jp/buy.php?itemid=786",
+  "w01": "d586"
+ },
+ {
+  "no": 210,
+  "name": "野反ダム",
+  "pref": "群馬県",
+  "river": "中津川",
+  "card_places": [
+   "野反湖ビジターセンター",
+   "食事処「六合の郷しらすな」"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①\nhttps://nozorikocamp.com/camp/\n\n②\nhttps://www.town.nakanojo.gunma.jp/soshiki/12/1360.html",
+  "w01": "d627"
+ },
+ {
+  "no": 211,
+  "name": "二瀬ダム",
+  "pref": "埼玉県",
+  "river": "荒川",
+  "card_places": [
+   "二瀬ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "http://www.ktr.mlit.go.jp/futase/",
+  "w01": "d705"
+ },
+ {
+  "no": 213,
+  "name": "玉淀ダム",
+  "pref": "埼玉県",
+  "river": "荒川",
+  "card_places": [
+   "東京発電(株)埼玉事業所玉淀事務所"
+  ],
+  "card_notes": [],
+  "url": "https://tokyohatsuden.co.jp",
+  "w01": "d706"
+ },
+ {
+  "no": 214,
+  "name": "下久保ダム",
+  "pref": "埼玉県",
+  "river": "神流川",
+  "card_places": [
+   "下久保ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "https://www.water.go.jp/kanto/simokubo/index.html",
+  "w01": "d616"
+ },
+ {
+  "no": 215,
+  "name": "浦山ダム",
+  "pref": "埼玉県",
+  "river": "浦山川",
+  "card_places": [
+   "浦山ダム防災資料館「うららぴあ」"
+  ],
+  "card_notes": [],
+  "url": "https://www.water.go.jp/kanto/arakawa/index.html",
+  "w01": "d709"
+ },
+ {
+  "no": 216,
+  "name": "滝沢ダム",
+  "pref": "埼玉県",
+  "river": "中津川",
+  "card_places": [
+   "滝沢ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "https://www.water.go.jp/kanto/arakawa/index.html",
+  "w01": "d708"
+ },
+ {
+  "no": 217,
+  "name": "有間ダム",
+  "pref": "埼玉県",
+  "river": "有間川",
+  "card_places": [
+   "有間ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.saitama.lg.jp/soshiki/b1005/kasen/arimadamu/index.html",
+  "w01": "d712"
+ },
+ {
+  "no": 218,
+  "name": "合角ダム",
+  "pref": "埼玉県",
+  "river": "吉田川",
+  "card_places": [
+   "合角ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "http://www.pref.saitama.lg.jp/b1007/k-dam/",
+  "w01": "d710"
+ },
+ {
+  "no": 220,
+  "name": "利根大堰",
+  "pref": "埼玉県",
+  "river": "利根川",
+  "card_places": [
+   "利根導水総合管理所",
+   "忍城バスターミナル観光案内所"
+  ],
+  "card_notes": [],
+  "url": "https://www.water.go.jp/kanto/tone/",
+  "pos": [
+   36.1849,
+   139.47339
+  ]
+ },
+ {
+  "no": 222,
+  "name": "間瀬ダム",
+  "pref": "埼玉県",
+  "river": "間瀬川",
+  "card_places": [
+   "本庄市観光協会児玉支部",
+   "美児沢用水土地改良区",
+   "本庄市観光農業センター"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://www.honjo-kanko.jp/",
+  "w01": "d703"
+ },
+ {
+  "no": 223,
+  "name": "利根川河口堰",
+  "pref": "千葉県",
+  "river": "利根川",
+  "card_places": [
+   "利根川河口堰管理所"
+  ],
+  "card_notes": [],
+  "url": "https://www.water.go.jp/kanto/tonekako/",
+  "pos": [
+   35.83798,
+   140.7042
+  ]
+ },
+ {
+  "no": 225,
+  "name": "矢那川ダム",
+  "pref": "千葉県",
+  "river": "田高川",
+  "card_places": [
+   "千葉県亀山・片倉ダム管理事務所",
+   "亀山観光案内所 やすらぎ館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.chiba.lg.jp/d-kameyama/index.html\n\n②\nhttp://www.kazusakameyama.com/",
+  "w01": "d669"
+ },
+ {
+  "no": 226,
+  "name": "亀山ダム",
+  "pref": "千葉県",
+  "river": "小櫃川",
+  "card_places": [
+   "千葉県亀山・片倉ダム管理事務所",
+   "亀山観光案内所 やすらぎ館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.chiba.lg.jp/d-kameyama/index.html\n\n②\nhttp://www.kazusakameyama.com/",
+  "w01": "d670"
+ },
+ {
+  "no": 227,
+  "name": "片倉ダム",
+  "pref": "千葉県",
+  "river": "笹川",
+  "card_places": [
+   "千葉県亀山・片倉ダム管理事務所",
+   "亀山観光案内所 やすらぎ館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.chiba.lg.jp/d-kameyama/index.html\n\n②\nhttp://www.kazusakameyama.com/",
+  "w01": "d671"
+ },
+ {
+  "no": 228,
+  "name": "高滝ダム",
+  "pref": "千葉県",
+  "river": "養老川",
+  "card_places": [
+   "千葉県高滝ダム管理事務所",
+   "高滝ダム記念館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://www.pref.chiba.lg.jp/d-takataki/index.html\n\n②\nhttp://ichiharazaidan.or.jp/takataki",
+  "w01": "d672"
+ },
+ {
+  "no": 231,
+  "name": "長柄ダム",
+  "pref": "千葉県",
+  "river": "支川村田川",
+  "card_places": [
+   "房総導水路管理所",
+   "長柄町都市農村交流センター"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①\nhttp://www.water.go.jp/kanto/bouso/\n\n②\nhttp://www.wakuwaku-nagara.com/",
+  "w01": "d633"
+ },
+ {
+  "no": 232,
+  "name": "東金ダム",
+  "pref": "千葉県",
+  "river": "十文字川",
+  "card_places": [
+   "房総導水路管理所"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "http://www.water.go.jp/kanto/bouso/",
+  "w01": "d632"
+ },
+ {
+  "no": 234,
+  "name": "小河内ダム",
+  "pref": "東京都",
+  "river": "多摩川",
+  "card_places": [
+   "小河内ダム展望塔",
+   "奥多摩 水と緑のふれあい館"
+  ],
+  "card_notes": [],
+  "url": "https://www.waterworks.metro.tokyo.lg.jp/suigen/antei/ogochi/",
+  "w01": "d682"
+ },
+ {
+  "no": 235,
+  "name": "白丸調整池ダム",
+  "pref": "東京都",
+  "river": "多摩川",
+  "card_places": [
+   "再生可能エネルギーＰＲ館（エコっと白丸）",
+   "白丸ダム魚道",
+   "奥多摩の風 はとのす荘"
+  ],
+  "card_notes": [],
+  "url": "https://www.kotsu.metro.tokyo.jp/other/hatsuden/damcard.html",
+  "w01": "d683"
+ },
+ {
+  "no": 236,
+  "name": "宮ヶ瀬ダム",
+  "pref": "神奈川県",
+  "river": "中津川",
+  "card_places": [
+   "相模川水系広域ダム管理事務所",
+   "宮ヶ瀬ダム水とエネルギー館"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています"
+  ],
+  "url": "http://www.ktr.mlit.go.jp/sagami/",
+  "w01": "d698"
+ },
+ {
+  "no": 237,
+  "name": "石小屋ダム",
+  "pref": "神奈川県",
+  "river": "中津川",
+  "card_places": [
+   "相模川水系広域ダム管理事務所",
+   "宮ヶ瀬ダム水とエネルギー館"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています"
+  ],
+  "url": "http://www.ktr.mlit.go.jp/sagami/",
+  "pos": [
+   35.53882,
+   139.25579
+  ]
+ },
+ {
+  "no": 238,
+  "name": "相模ダム",
+  "pref": "神奈川県",
+  "river": "相模川",
+  "card_places": [
+   "相模川水系ダム管理事務所分館",
+   "相模湖交流センター"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://www.pref.kanagawa.jp/div/3010/\n\n②\nhttps://www.sagamiko-kouryu.jp/",
+  "w01": "d691"
+ },
+ {
+  "no": 239,
+  "name": "城山ダム",
+  "pref": "神奈川県",
+  "river": "相模川",
+  "card_places": [
+   "相模川水系ダム管理事務所",
+   "津久井湖記念館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://www.pref.kanagawa.jp/div/3010/\n\n②\nhttps://www.samaria.com/tukuiko/",
+  "w01": "d693"
+ },
+ {
+  "no": 240,
+  "name": "道志ダム",
+  "pref": "神奈川県",
+  "river": "道志川",
+  "card_places": [
+   "相模川水系ダム管理事務所",
+   "津久井湖記念館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://www.pref.kanagawa.jp/div/3010/\n\n②\nhttps://www.samaria.com/tukuiko/",
+  "w01": "d696"
+ },
+ {
+  "no": 241,
+  "name": "寒川取水堰",
+  "pref": "神奈川県",
+  "river": "相模川",
+  "card_places": [
+   "相模川水系ダム管理事務所",
+   "神奈川県水道記念館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://www.pref.kanagawa.jp/div/3010/\n\n②\nhttps://www.pref.kanagawa.jp/docs/r4a/suidoukinenkan/suidoukinenkan.html",
+  "pos": [
+   35.37574,
+   139.3712
+  ]
+ },
+ {
+  "no": 242,
+  "name": "本沢ダム",
+  "pref": "神奈川県",
+  "river": "本沢",
+  "card_places": [
+   "発電総合制御所",
+   "津久井湖記念館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://www.pref.kanagawa.jp/div/3226/\n\n②\nhttps://www.samaria.com/tukuiko/",
+  "w01": "d690"
+ },
+ {
+  "no": 243,
+  "name": "三保ダム",
+  "pref": "神奈川県",
+  "river": "酒匂川",
+  "card_places": [
+   "酒匂川水系ダム管理事務所",
+   "丹沢湖記念館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://www.pref.kanagawa.jp/div/3011/\n\n②\nhttps://tanzawako-k.sakura.ne.jp/",
+  "w01": "d701"
+ },
+ {
+  "no": 244,
+  "name": "荒川ダム",
+  "pref": "山梨県",
+  "river": "荒川",
+  "card_places": [
+   "荒川ダム管理事務所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.yamanashi.jp/damu-arkw/index.html",
+  "w01": "d998"
+ },
+ {
+  "no": 245,
+  "name": "琴川ダム",
+  "pref": "山梨県",
+  "river": "琴川",
+  "card_places": [
+   "広瀬・琴川ダム管理事務所琴川ダム管理課"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.yamanashi.jp/damu-hrkt/index.html",
+  "w01": "d1002"
+ },
+ {
+  "no": 246,
+  "name": "深城ダム",
+  "pref": "山梨県",
+  "river": "葛野川",
+  "card_places": [
+   "深城ダム管理事務所"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.yamanashi.jp/damu-fk/index.html",
+  "w01": "d989"
+ },
+ {
+  "no": 247,
+  "name": "大門ダム",
+  "pref": "山梨県",
+  "river": "大門川",
+  "card_places": [
+   "大門・塩川ダム管理事務所　大門ダム管理課"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.yamanashi.jp/dam-dmskkn/toppage.html",
+  "w01": "d994"
+ },
+ {
+  "no": 248,
+  "name": "塩川ダム",
+  "pref": "山梨県",
+  "river": "塩川",
+  "card_places": [
+   "大門・塩川ダム管理事務所　塩川ダム管理課"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.yamanashi.jp/dam-dmskkn/92021224905.html",
+  "w01": "d993"
+ },
+ {
+  "no": 249,
+  "name": "広瀬ダム",
+  "pref": "山梨県",
+  "river": "笛吹川",
+  "card_places": [
+   "広瀬・琴川ダム管理事務所広瀬ダム管理課"
+  ],
+  "card_notes": [],
+  "url": "https://www.pref.yamanashi.jp/damu-hrkt/index.html",
+  "w01": "d995"
+ },
+ {
+  "no": 250,
+  "name": "西山ダム",
+  "pref": "山梨県",
+  "river": "早川",
+  "card_places": [
+   "早川水系取水口監視所"
+  ],
+  "card_notes": [],
+  "url": "http://www.pref.yamanashi.jp/hayakawa-h/",
+  "w01": "d1003"
+ },
+ {
+  "no": 251,
+  "name": "上日川ダム",
+  "pref": "山梨県",
+  "river": "日川",
+  "card_places": [
+   "やまと天目山温泉",
+   "道の駅　甲斐大和"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①\nhttp://www.daibosatsu-kankou.com/facility/yamato_tenmoku_hotspring.php\n\n②\nhttps://kaiyamato.com/",
+  "w01": "d996"
+ },
+ {
+  "no": 388,
+  "name": "長島ダム",
+  "pref": "静岡県",
+  "river": "大井川",
+  "card_places": [
+   "長島ダム管理所",
+   "長島ダム防災施設ふれあい館"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://www.cbr.mlit.go.jp/nagashima/\n\n②\nhttps://www.cbr.mlit.go.jp/nagashima/public/index.html",
+  "w01": "d1179"
+ },
+ {
+  "no": 389,
+  "name": "太田川ダム",
+  "pref": "静岡県",
+  "river": "太田川",
+  "card_places": [
+   "太田川ダム管理所",
+   "アクティ森"
+  ],
+  "card_notes": [],
+  "url": "①\nhttp://doboku.pref.shizuoka.jp/desaki/ootagawa1/",
+  "w01": "d1190"
+ },
+ {
+  "no": 390,
+  "name": "奥野ダム",
+  "pref": "静岡県",
+  "river": "伊東大川",
+  "card_places": [
+   "道の駅「伊東マリンタウン」",
+   "観光案内所",
+   "奥野ダム管理所"
+  ],
+  "card_notes": [],
+  "url": "①\nhttps://itomarinetown.co.jp/\n\n②\nhttp://www.okunodam.jp/",
+  "w01": "d1170"
+ },
+ {
+  "no": 391,
+  "name": "井川ダム",
+  "pref": "静岡県",
+  "river": "大井川",
+  "card_places": [
+   "井川展示館"
+  ],
+  "card_notes": [],
+  "url": "https://www.chuden.co.jp/kids/pr/ikawa-pr/",
+  "w01": "d1177"
+ },
+ {
+  "no": 392,
+  "name": "青野大師ダム",
+  "pref": "静岡県",
+  "river": "鈴野川",
+  "card_places": [
+   "道の駅",
+   "「下賀茂温泉　湯の花」",
+   "（南伊豆町観光協会）"
+  ],
+  "card_notes": [],
+  "url": "http://www.pref.shizuoka.jp/kensetsu/ke-810/aono.html",
+  "w01": "d1171"
+ },
+ {
+  "no": 393,
+  "name": "大倉川農地防災ダム",
+  "pref": "静岡県",
+  "river": "大倉川",
+  "card_places": [
+   "大倉川農地防災ダム管理事務所",
+   "富士ミルクランド"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "①\nhttps://www.pref.shizuoka.jp/sangyoshigoto/norinjimusho/fujinorin/1004180/1033977.html\n\n②\nhttp://fujimilkland.com",
+  "pos": [
+   35.30286,
+   138.56959
+  ]
+ },
+ {
+  "no": 394,
+  "name": "佐久間ダム",
+  "pref": "静岡県",
+  "river": "天竜川",
+  "card_places": [
+   "佐久間電力館"
+  ],
+  "card_notes": [],
+  "url": "http://www.jpower.co.jp/damcard/sakuma.html",
+  "w01": "d1200"
+ },
+ {
+  "no": 395,
+  "name": "秋葉ダム",
+  "pref": "静岡県",
+  "river": "天竜川",
+  "card_places": [
+   "龍山保健センター内　龍山入浴施設「やすらぎの湯」受付カウンター"
+  ],
+  "card_notes": [],
+  "url": "http://www.jpower.co.jp/damcard/akiha.html",
+  "w01": "d1212"
+ },
+ {
+  "no": 396,
+  "name": "畑薙第一ダム",
+  "pref": "静岡県",
+  "river": "大井川",
+  "card_places": [
+   "静岡市・南アルプス赤石温泉",
+   "白樺荘"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "https://www.chuden.co.jp/energy/renew/ren_setsubi/water/damcard/",
+  "w01": "d1174"
+ },
+ {
+  "no": 397,
+  "name": "大間ダム",
+  "pref": "静岡県",
+  "river": "寸又川",
+  "card_places": [
+   "南アルプス山岳図書館・観光案内所",
+   "寸又峡観光案内所",
+   "翠紅苑"
+  ],
+  "card_notes": [
+   "配布場所はダムから離れています",
+   "配布時にダムの写真提示が必要"
+  ],
+  "url": "https://www.chuden.co.jp/energy/renew/ren_setsubi/water/damcard/",
+  "w01": "d1183"
+ },
+ {
+  "no": 399,
+  "name": "船明ダム",
+  "pref": "静岡県",
+  "river": "天竜川",
+  "card_places": [
+   "道の駅 花桃の里"
+  ],
+  "card_notes": [],
+  "url": "http://www.jpower.co.jp/damcard/funagira.html",
+  "w01": "d1201"
+ },
+ {
+  "no": 400,
+  "name": "水窪ダム",
+  "pref": "静岡県",
+  "river": "戸中川",
+  "card_places": [
+   "みさくぼ路の里",
+   "水窪総合体育館"
+  ],
+  "card_notes": [],
+  "url": "http://www.jpower.co.jp/damcard/misakubo.html",
+  "w01": "d1202"
+ }
+]
