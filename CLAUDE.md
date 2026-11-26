@@ -12,6 +12,7 @@
 - `data/spots.json` — 全スポット（id, c=カテゴリ m道の駅/d ダム/f 牧場, n名前, p都県, t市町村, la/lo座標, r判定半径m, x補足, k ダムカード配布情報, u公式URL）
 - `data/damcards.json` — 対象ダム一覧。国交省「ダムカード配布場所一覧」（2026年1月16日版 xlsx）のうち対象都県のもの＝見学者を受け入れているダムだけを採用。湖沼・水路・調節池は除外、田代ダム（一般車通行不可の林道の先）も除外。`w01` があれば国土数値情報W01の属性・座標を使う
 - `data/ranches.json` — 手動選定した観光牧場リスト（id固定・名前・住所・座標・注意書き note）。2026年11月に営業状況を確認済み（赤城クローネンベルクは2017年閉園のため除外）
+- `data/yomi.json` — 検索用の読み（名前→ひらがな。道の駅は「道の駅」を除いた名前がキー、複数の読みは `|` 区切り）。名前がかなだけのものは不要。手で校正済み。build_html.py が spots に `y` として付ける
 - `tools/fetch_sources.sh` — 国土数値情報（道の駅P35-18、ダムW01-14）をraw/へ取得
 - `tools/build_data.py` — raw/・damcards.json・ranches.json から data/spots.json を生成（対象都県はファイル内の `P`）
 - `tools/geocode_ranches.py` — 牧場リストを住所から座標化（地理院API＋Nominatim）

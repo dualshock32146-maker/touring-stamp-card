@@ -327,7 +327,7 @@ $('#imp').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)re
 /* ---- 検索 ---- */
 /* 全角半角・カタカナひらがな・空白の違いを吸収して部分一致 */
 const norm=t=>String(t||'').normalize('NFKC').toLowerCase().replace(/[\u30a1-\u30f6]/g,c=>String.fromCharCode(c.charCodeAt(0)-0x60)).replace(/[\s・･]/g,'');
-const IDX=SPOTS.map(s=>({s,n:norm(s.n),a:norm(s.p+s.t)}));
+const IDX=SPOTS.map(s=>({s,n:norm(s.n)+'|'+norm(s.y),a:norm(s.p+s.t)}));
 const qEl=$('#q'),sres=$('#sres');
 function search(){
   const raw=qEl.value.trim();$('#qClr').hidden=!raw;
